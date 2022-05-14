@@ -1,0 +1,9 @@
+---
+~target:  creative
+~details: Configuration for Paper/Spigot/Bukkit/NMS
+~include:
+  - /configs/shared/paper.yml
+---
+
+server_port: 25598
+players: 20
