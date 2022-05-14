@@ -1,0 +1,8 @@
+---
+~target:  creative
+~details: Configuration for LuckPerms
+~include:
+  - /configs/shared/luckperms.yml
+---
+
+server_context: global

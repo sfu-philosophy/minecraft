@@ -1,0 +1,8 @@
+database:
+  method: mariadb
+  address: '{{ .Values.Secrets.DATABASE_ADDRESS }}'
+
+  database: '{{ .Values.Secrets.DATABASE_USERNAME }}'
+
+  username: '{{ .Values.Secrets.DATABASE_USERNAME }}'
+  password: '{{ .Values.Secrets.DATABASE_PASSWORD }}'
