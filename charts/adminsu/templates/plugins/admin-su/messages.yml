@@ -1,0 +1,43 @@
+prefix: {{ .Values.messages.prefix | quote }}
+
+error:
+    console: {{ .Values.messages.error.console | quote }}
+    permission: {{ .Values.messages.error.permission | quote }}
+    unknown_command: {{ .Values.messages.error.unknown_command | quote }}
+    player_not_found: {{ .Values.messages.error.player_not_found | quote }}
+    player_multiple_found: {{ .Values.messages.error.player_multiple_found | quote }}
+    
+su:
+    enabled: {{ .Values.messages.su.enabled | quote }}
+    enabled_broadcast: {{ .Values.messages.su.enabled_broadcast | quote }}
+    disabled: {{ .Values.messages.su.disabled | quote }}
+    disabled_broadcast: {{ .Values.messages.su.disabled_broadcast | quote }}
+    
+command:
+    toggle:
+        usage: {{ .Values.messages.command.toggle.usage | quote }}
+        
+    enable:
+        usage: {{ .Values.messages.command.enable.usage | quote }}
+    
+    check:
+        usage: {{ .Values.messages.command.check.usage | quote }}
+        enabled: {{ .Values.messages.command.check.enabled | quote }}
+        disabled: {{ .Values.messages.command.check.disabled | quote }}
+        impossible: {{ .Values.messages.command.check.impossible | quote }}
+    
+    reload.success: {{ .Values.messages.command.reload.success | quote }}
+    
+    about:
+        feature_enabled: {{ .Values.messages.command.about.feature_enabled | quote }}
+        feature_disabled: {{ .Values.messages.command.about.feature_disabled | quote }}
+        warning_opmode: {{ .Values.messages.command.about.warning_opmode | quote }}
+
+placeholder:
+    enabled: {{ .Values.messages.placeholder.enabled | quote }}
+    disabled: {{ .Values.messages.placeholder.disabled | quote }}
+    impossible: {{ .Values.messages.placeholder.impossible | quote }}
+    
+
+
+__version__: "1.1"

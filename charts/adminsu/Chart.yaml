@@ -1,0 +1,8 @@
+apiVersion: v2
+name: adminsu
+description: Bukkit admin-su configuration
+home: https://github.com/eth-p/bukkit-admin-su
+
+type: application
+version: 1.1
+appVersion: 1.1

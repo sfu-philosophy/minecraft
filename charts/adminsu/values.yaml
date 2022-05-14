@@ -1,0 +1,45 @@
+messages:
+  prefix: "&c[SU]&r "
+
+  # Error messages.
+  error:
+    console: "&cError: &4Console is always an admin."
+    permission: "&cError: &4You do not have permission to do that."
+    unknown_command: "&cError: &4Unknown subcommand."
+    player_not_found: '&cError: &4No players matched the name "&c{query}&4".'
+    player_multiple_found: '&cError: &4Multiple players matched the name "&c{query}&4".'
+
+  # Su messages.
+  su:
+    enabled: "&aYou are now in admin mode."
+    enabled_broadcast: "&e{player}&6 is entering admin mode."
+    disabled: "&aYou are no longer in admin mode."
+    disabled_broadcast: "&e{player}&6 is exiting admin mode."
+
+  # Command messages.
+  command:
+    toggle:
+      usage: "&cUsage: &6/{command}"
+
+    enable:
+      usage: "&cUsage: &6/{command}"
+
+    check:
+      usage: "&cUsage: &6/{command} &e<[&6player&e>"
+      enabled: "&e{player}&6 is currently in &aadmin&6 mode."
+      disabled: "&e{player}&6 is currently in &cplayer&6 mode."
+      impossible: "&c{player} does not have permission to be in admin mode."
+
+    reload:
+      success: "&aReloaded admin-su successfully."
+
+    about:
+      feature_enabled: '&e{feature}: &aENABLED'
+      feature_disabled: '&e{feature}: &cDISABLED'
+      warning_opmode: '&cWARNING: A compatible permissions plugin was not found. Op will be used instead.'
+
+  # PlaceholderAPI placeholder values.
+  placeholder:
+    enabled: "Enabled"
+    disabled: "Disabled"
+    impossible: ""
