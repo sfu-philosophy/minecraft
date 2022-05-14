@@ -1,0 +1,34 @@
+---
+~target:  proxy
+~details: Configuration for Bungeecord/Waterfall
+---
+
+motd: |
+  &rThe official SFU Philosophy Minecraft server.
+  &2https://discord.gg/&bsfuphilosophy
+
+# Servers
+servers:
+  lobby:
+    motd: '&1Just another Waterfall - Forced Host'
+    address: 51.222.97.36:25598
+    restricted: false
+  survival:
+    motd: '&1Just another Waterfall - Forced Host'
+    address: 192.99.233.188:27037
+    restricted: false
+
+priorities:
+  - lobby
+  - survival
+
+# Configuration:
+host: 0.0.0.0:25618
+players: 20
+tab_size: 60
+
+ip_forward: true
+
+# Security:
+online_mode: true
+prevent_proxy_connections: true
