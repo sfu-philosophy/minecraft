@@ -14,6 +14,8 @@ import os
 import sys
 import subprocess
 import yaml
+import json
+import gzip
 
 
 class Chart:
@@ -295,9 +297,20 @@ def postprocess_dir(dir: 'str'):
         _, extname = os.path.splitext(entry)
         if extname == '.notyml':
             with open(entry_path, 'r') as handle:
-                contents = yaml.safe_load(handle)
-                with open(path.join(dir, contents['~rename']), 'w') as dest:
-                    dest.write(contents['~contents'])
+                data = yaml.safe_load(handle)
+
+                contents = data['~contents']
+                rename = data['~rename']
+
+                if '~modify' in data:
+                    for operation in data['~modify']:
+                        contents = postprocess_operation(operation, contents)
+
+                if type(contents) is str:
+                    contents = contents.encode('utf-8')
+
+                with open(path.join(dir, rename), 'wb') as dest:
+                    dest.write(contents)
 
             os.remove(entry_path)
             continue
@@ -312,6 +325,17 @@ def postprocess_dir(dir: 'str'):
                     dest.write(contents)
 
             os.rename(entry_path + ".new", entry_path)
+
+def postprocess_operation(operation: 'str', contents: 'str|bytes') -> 'str|bytes':
+    if operation == 'yaml2json' and type(contents) is str:
+        decoded = yaml.safe_load(contents)
+        return json.dumps(decoded)
+
+    if operation == 'gzip':
+        return gzip.compress(contents.encode('utf-8'))
+
+    raise RuntimeError(f"Unknown postprocessing operation for {type(contents)}: {operation}")
+
 
 
 # ======================================================================================================================

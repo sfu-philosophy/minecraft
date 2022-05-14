@@ -58,3 +58,23 @@ Sometimes you have non-YAML files for configuration. Helm doesn't support this o
 ```
 
 The above snippet would move the `~contents` text into a file called `something.md`.
+
+#### Postprocessing
+
+Wrapper templates support additional postprocessing, too. By adding the `~modify` directive, you can change the final result of the saved file:
+
+```yaml
+~rename: data.json.gz
+~modify: [yaml2json, gzip]
+~contents: |-
+  this:
+    will:
+      be: |-
+        json
+```
+
+Available postprocessing operations are:
+
+- `yaml2json`: Parses the contents string as YAML, then encodes it into a JSON string.
+- `gzip`: Gzips the contents string.
+
