@@ -10,5 +10,6 @@ render/%:
 
 render:
 	$(helmaroc)
+	@yamllint -c .yamllint.ci.yml deploy
 
 

@@ -24,7 +24,7 @@ runs:
     - name: Install Helmaroc Dependencies
       shell: bash
       run: |
-        pip3 install pyyaml
+        pip3 install pyyaml yamllint
 
     # Generate the .secrets.yml file, which provides the secrets to helmaroc.
     - name: Generate Secrets
@@ -40,3 +40,9 @@ runs:
       shell: bash
       run: |
         python3 helmaroc.py
+
+    # Lint the rendered configuration files.
+    - name: Validate
+      shell: bash
+      run: |
+        yamllint -c .yamllint.ci.yml deploy
