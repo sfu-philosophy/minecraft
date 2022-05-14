@@ -19,6 +19,7 @@ jobs:
           DATABASE_ADDRESS: ${{ secrets.DATABASE_ADDRESS }}
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          BUNGEEGUARD_TOKEN: ${{ secrets.BUNGEEGUARD_TOKEN }}
 
       - name: Deploy config files (proxy)
         uses: SamKirkland/FTP-Deploy-Action@4.3.0

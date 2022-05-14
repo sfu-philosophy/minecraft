@@ -13,9 +13,9 @@ whitelist: false
 idle_kick: 0
 
 bungeecord:
-  enabled: true
-  proxies:
-    - 51.222.97.25
+  enabled: false
+  tokens:
+    - 'your token goes here'
 
 # Messages to display to players.
 messages:
@@ -28,7 +28,8 @@ messages:
   outdated_server: "Outdated server! I'm still on {0}"
   restart: "Server is restarting"
   authentication_servers_down: ''
-  must_join_through_proxy: '&cYou have to join through the proxy.'
+  must_join_through_proxy: "&cUnable to authenticate."
+  must_join_through_proxy_no_token: "&cUnable to authenticate - no data was forwarded by the proxy."
   too_many_packets: "&cSent too many packets"
   connection_throttle: "Connection throttled! Please wait before reconnecting."
   flying_player: "Flying is not enabled on this server"
