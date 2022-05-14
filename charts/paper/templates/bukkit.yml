@@ -1,0 +1,31 @@
+settings:
+  allow-end: {{ .Values.allow_worlds.the_end }}
+  warn-on-overload: true
+  permissions-file: permissions.yml
+  update-folder: update
+  plugin-profiling: false
+  connection-throttle: 4000
+  query-plugins: true
+  deprecated-verbose: default
+  shutdown-message: {{ .Values.messages.shutdown }}
+  minimum-api: none
+spawn-limits:
+  monsters: {{ .Values.entities.limits.monsters }}
+  animals: {{ .Values.entities.limits.animals }}
+  water-animals: {{ .Values.entities.limits.water_animals }}
+  water-ambient: {{ .Values.entities.limits.water_ambient }}
+  water-underground-creature: {{ .Values.entities.limits.water_underground_creature }}
+  axolotls: {{ .Values.entities.limits.axolotls }}
+  ambient: {{ .Values.entities.limits.ambient }}
+chunk-gc:
+  period-in-ticks: 600
+ticks-per:
+  animal-spawns: {{ .Values.ticks_per.animal_spawns }}
+  monster-spawns: {{ .Values.ticks_per.monster_spawns }}
+  water-spawns: {{ .Values.ticks_per.water_spawns }}
+  water-ambient-spawns: {{ .Values.ticks_per.water_ambient_spawns }}
+  water-underground-creature-spawns: {{ .Values.ticks_per.water_underground_creature_spawns }}
+  axolotl-spawns: {{ .Values.ticks_per.axolotl_spawns }}
+  ambient-spawns: {{ .Values.ticks_per.ambient_spawns }}
+  autosave: {{ .Values.ticks_per.autosave }}
+aliases: now-in-commands.yml

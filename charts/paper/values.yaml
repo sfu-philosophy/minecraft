@@ -1,0 +1,207 @@
+# ======================================================================================================================
+# | SERVER                                                                                                             |
+# ======================================================================================================================
+
+# Server settings.
+server_ip: 0.0.0.0
+server_port: 25565
+
+players: 20
+online_mode: true
+whitelist: false
+
+idle_kick: 0
+
+bungeecord:
+  enabled: true
+  proxies:
+    - 51.222.97.25
+
+# Messages to display to players.
+messages:
+  motd: "A Minecraft server"
+  shutdown: "Server closed"
+  whitelist: "You are not whitelisted on this server!"
+  unknown_command: 'Unknown command. Type "/help" for help.'
+  server_full: "The server is full!"
+  outdated_client: "Outdated client! Please use {0}"
+  outdated_server: "Outdated server! I'm still on {0}"
+  restart: "Server is restarting"
+  authentication_servers_down: ''
+  must_join_through_proxy: '&cYou have to join through the proxy.'
+  too_many_packets: "&cSent too many packets"
+  connection_throttle: "Connection throttled! Please wait before reconnecting."
+  flying_player: "Flying is not enabled on this server"
+  flying_vehicle: "Flying is not enabled on this server"
+  no_permission: |-
+    &cI'm sorry, but you do not have permission to perform this command.
+    Please contact the server administrators if you believe that this is in error.
+
+
+# ======================================================================================================================
+# | GAMEPLAY                                                                                                           |
+# ======================================================================================================================
+
+# Gameplay settings.
+game:
+  difficulty: easy
+  gamemode: survival
+  hardcore: false
+
+  thunder_chance: 100000
+  zombie_aggressive_towards_villager: true
+  
+  hunger:
+    jump_walk_exhaustion: 0.05
+    jump_sprint_exhaustion: 0.2
+    combat_exhaustion: 0.1
+    regen_exhaustion: 6.0
+    swim_multiplier: 0.01
+    sprint_multiplier: 0.1
+    other_multiplier: 0.0
+    
+  growth:
+    cactus_modifier: 100
+    cane_modifier: 100
+    melon_modifier: 100
+    mushroom_modifier: 100
+    pumpkin_modifier: 100
+    sapling_modifier: 100
+    beetroot_modifier: 100
+    carrot_modifier: 100
+    potato_modifier: 100
+    wheat_modifier: 100
+    netherwart_modifier: 100
+    vine_modifier: 100
+    cocoa_modifier: 100
+    bamboo_modifier: 100
+    sweetberry_modifier: 100
+    kelp_modifier: 100
+    twistingvines_modifier: 100
+    weepingvines_modifier: 100
+    cavevines_modifier: 100
+    glowberry_modifier: 100
+
+  world_name: world
+  world_type: default
+  world_seed:
+    general: 1267283210
+    village: default
+    desert: default
+    igloo: default
+    jungle: default
+    swamp: default
+    monument: default
+    shipwreck: default
+    ocean: default
+    outpost: default
+    endcity: default
+    slime: default
+    nether: default
+    mansion: default
+    fossil: default
+    portal: default
+    stronghold: default
+
+# Tick rate for given actions.
+# Increase/decrease depending on difficulty, server needs and resources.
+ticks_per:
+  animal_spawns: 400
+  monster_spawns: 1
+  water_spawns: 1
+  water_ambient_spawns: 1
+  water_underground_creature_spawns: 1
+  axolotl_spawns: 1
+  ambient_spawns: 1
+  hopper_transfer: 8
+  hopper_check: 1
+
+  autosave: 6000
+
+
+# Entity spawning limits.
+# Increase/decrease depending on server needs and resources.
+entities:
+  hopper_transfer_amount: 1
+
+  spawn:
+    animals: true
+    monsters: true
+    npcs: true
+    zombie_piglin_around_portals: true
+
+  limits:
+    monsters: 70
+    animals: 10
+    water_animals: 5
+    water_ambient: 20
+    water_underground_creature: 5
+    axolotls: 5
+    ambient: 15
+
+  despawn_rate:
+    item: 6000
+    arrow: 1200
+    trident: 1200
+
+  merge_radius:
+    item: 2.5
+    exp: 3.0
+    
+  activation_range:
+    animals: 32
+    monsters: 32
+    raiders: 48
+    misc: 16
+    water: 16
+    villagers: 32
+    flying_monsters: 32
+    
+  activation_wakeup:
+    animals_max_per_tick: 4
+    animals_every: 1200
+    animals_for: 100
+    monsters_max_per_tick: 8
+    monsters_every: 400
+    monsters_for: 100
+    villagers_max_per_tick: 4
+    villagers_every: 600
+    villagers_for: 100
+    flying_monsters_max_per_tick: 8
+    flying_monsters_every: 200
+    flying_monsters_for: 100
+    
+  tracking_range:
+    players: 48
+    animals: 48
+    monsters: 48
+    misc: 32
+    other: 64
+    
+# Options for disabling default world generation.
+allow_worlds:
+  the_nether: true
+  the_end: true
+
+# Options for disabling cheats.
+allow_cheats:
+  flight: false
+  permanent_block_break_exploits: false
+  piston_duplication: false
+  headless_pistons: false
+
+anticheat:
+  moved_wrongly_threshold: 0.0625
+  moved_too_quickly_multiplier: 10.0
+
+
+# ======================================================================================================================
+# | PERFORMANCE                                                                                                        |
+# ======================================================================================================================
+
+# Distance limits for various things.
+distances:
+  spawn_protection_blocks: 16
+  view_chunks: 10
+  simulation_chunks: 10
+  mob_spawn_range: 8

@@ -1,0 +1,169 @@
+# This is the main configuration file for Spigot.
+# As you can see, there's tons to configure. Some options may impact gameplay, so use
+# with caution, and make sure you know what each option does before configuring.
+# For a reference for any variable inside this file, check out the Spigot wiki at
+# http://www.spigotmc.org/wiki/spigot-configuration/
+#
+# If you need help with the configuration or have any questions related to Spigot,
+# join us at the Discord or drop by our forums and leave a post.
+#
+# Discord: https://www.spigotmc.org/go/discord
+# Forums: http://www.spigotmc.org/
+
+settings:
+  debug: false
+  player-shuffle: 0
+  user-cache-size: 1000
+  save-user-cache-on-stop-only: false
+  moved-wrongly-threshold: {{ .Values.anticheat.moved_wrongly_threshold }}
+  moved-too-quickly-multiplier: {{ .Values.anticheat.moved_too_quickly_multiplier }}
+  sample-count: 12
+  bungeecord: {{ .Values.bungeecord.enabled }}
+  timeout-time: 60
+  restart-on-crash: false
+  restart-script: ./start.sh
+  netty-threads: 4
+  attribute:
+    maxHealth:
+      max: 2048.0
+    movementSpeed:
+      max: 2048.0
+    attackDamage:
+      max: 2048.0
+  log-villager-deaths: true
+  log-named-deaths: true
+commands:
+  spam-exclusions:
+  - /skill
+  silent-commandblock-console: false
+  replace-commands:
+  - setblock
+  - summon
+  - testforblock
+  - tellraw
+  log: true
+  tab-complete: 0
+  send-namespaced: true
+world-settings:
+  default:
+    below-zero-generation-in-existing-chunks: true
+    verbose: false
+    merge-radius:
+      item: {{ .Values.entities.merge_radius.item }}
+      exp: {{ .Values.entities.merge_radius.exp }}
+    view-distance: default
+    simulation-distance: default
+    thunder-chance: {{ .Values.game.thunder_chance }}
+    item-despawn-rate: {{ .Values.entities.despawn_rate.item }}
+    enable-zombie-pigmen-portal-spawns: {{ .Values.entities.spawn.zombie_piglin_around_portals }}
+    wither-spawn-sound-radius: 0
+    arrow-despawn-rate: {{ .Values.entities.despawn_rate.arrow }}
+    trident-despawn-rate: {{ .Values.entities.despawn_rate.trident }}
+    hanging-tick-frequency: 100
+    zombie-aggressive-towards-villager: {{ .Values.game.zombie_aggressive_towards_villager }}
+    nerf-spawner-mobs: false
+    mob-spawn-range: {{ .Values.distances.mob_spawn_range }}
+    end-portal-sound-radius: 0
+    entity-activation-range:
+      animals: {{ .Values.entities.activation_range.animals }}
+      monsters: {{ .Values.entities.activation_range.monsters }}
+      raiders: {{ .Values.entities.activation_range.raiders }}
+      misc: {{ .Values.entities.activation_range.misc }}
+      water: {{ .Values.entities.activation_range.water }}
+      villagers: {{ .Values.entities.activation_range.villagers }}
+      flying-monsters: {{ .Values.entities.activation_range.flying_monsters }}
+      wake-up-inactive:
+        animals-max-per-tick: {{ .Values.entities.activation_wakeup.animals_max_per_tick }}
+        animals-every: {{ .Values.entities.activation_wakeup.animals_every }}
+        animals-for: {{ .Values.entities.activation_wakeup.animals_for }}
+        monsters-max-per-tick: {{ .Values.entities.activation_wakeup.monsters_max_per_tick }}
+        monsters-every: {{ .Values.entities.activation_wakeup.monsters_every }}
+        monsters-for: {{ .Values.entities.activation_wakeup.monsters_for }}
+        villagers-max-per-tick: {{ .Values.entities.activation_wakeup.villagers_max_per_tick }}
+        villagers-every: {{ .Values.entities.activation_wakeup.villagers_every }}
+        villagers-for: {{ .Values.entities.activation_wakeup.villagers_for }}
+        flying-monsters-max-per-tick: {{ .Values.entities.activation_wakeup.flying_monsters_max_per_tick }}
+        flying-monsters-every: {{ .Values.entities.activation_wakeup.flying_monsters_every }}
+        flying-monsters-for: {{ .Values.entities.activation_wakeup.flying_monsters_for }}
+      villagers-work-immunity-after: 100
+      villagers-work-immunity-for: 20
+      villagers-active-for-panic: true
+      tick-inactive-villagers: true
+      ignore-spectators: false
+    entity-tracking-range:
+      players: {{ .Values.entities.tracking_range.players }}
+      animals: {{ .Values.entities.tracking_range.animals }}
+      monsters: {{ .Values.entities.tracking_range.monsters }}
+      misc: {{ .Values.entities.tracking_range.misc }}
+      other: {{ .Values.entities.tracking_range.other }}
+    ticks-per:
+      hopper-transfer: {{ .Values.ticks_per.hopper_transfer }}
+      hopper-check: {{ .Values.ticks_per.hopper_check }}
+    hopper-amount: {{ .Values.entities.hopper_transfer_amount }}
+    dragon-death-sound-radius: 0
+    seed-village: {{ .Values.game.world_seed.village }}
+    seed-desert: {{ .Values.game.world_seed.desert }}
+    seed-igloo: {{ .Values.game.world_seed.igloo }}
+    seed-jungle: {{ .Values.game.world_seed.jungle }}
+    seed-swamp: {{ .Values.game.world_seed.swamp }}
+    seed-monument: {{ .Values.game.world_seed.monument }}
+    seed-shipwreck: {{ .Values.game.world_seed.shipwreck }}
+    seed-ocean: {{ .Values.game.world_seed.ocean }}
+    seed-outpost: {{ .Values.game.world_seed.outpost }}
+    seed-endcity: {{ .Values.game.world_seed.endcity }}
+    seed-slime: {{ .Values.game.world_seed.slime }}
+    seed-nether: {{ .Values.game.world_seed.nether }}
+    seed-mansion: {{ .Values.game.world_seed.mansion }}
+    seed-fossil: {{ .Values.game.world_seed.fossil }}
+    seed-portal: {{ .Values.game.world_seed.portal }}
+    seed-stronghold: {{ .Values.game.world_seed.stronghold }}
+    hunger:
+      jump-walk-exhaustion: {{ .Values.game.hunger.jump_walk_exhaustion }}
+      jump-sprint-exhaustion: {{ .Values.game.hunger.jump_sprint_exhaustion }}
+      combat-exhaustion: {{ .Values.game.hunger.combat_exhaustion }}
+      regen-exhaustion: {{ .Values.game.hunger.regen_exhaustion }}
+      swim-multiplier: {{ .Values.game.hunger.swim_multiplier }}
+      sprint-multiplier: {{ .Values.game.hunger.sprint_multiplier }}
+      other-multiplier: {{ .Values.game.hunger.other_multiplier }}
+    max-tnt-per-tick: 100
+    max-tick-time:
+      tile: 50
+      entity: 50
+    growth:
+      cactus-modifier: {{ .Values.game.growth.cactus_modifier }}
+      cane-modifier: {{ .Values.game.growth.cane_modifier }}
+      melon-modifier: {{ .Values.game.growth.melon_modifier }}
+      mushroom-modifier: {{ .Values.game.growth.mushroom_modifier }}
+      pumpkin-modifier: {{ .Values.game.growth.pumpkin_modifier }}
+      sapling-modifier: {{ .Values.game.growth.sapling_modifier }}
+      beetroot-modifier: {{ .Values.game.growth.beetroot_modifier }}
+      carrot-modifier: {{ .Values.game.growth.carrot_modifier }}
+      potato-modifier: {{ .Values.game.growth.potato_modifier }}
+      wheat-modifier: {{ .Values.game.growth.wheat_modifier }}
+      netherwart-modifier: {{ .Values.game.growth.netherwart_modifier }}
+      vine-modifier: {{ .Values.game.growth.vine_modifier }}
+      cocoa-modifier: {{ .Values.game.growth.cocoa_modifier }}
+      bamboo-modifier: {{ .Values.game.growth.bamboo_modifier }}
+      sweetberry-modifier: {{ .Values.game.growth.sweetberry_modifier }}
+      kelp-modifier: {{ .Values.game.growth.kelp_modifier }}
+      twistingvines-modifier: {{ .Values.game.growth.twistingvines_modifier }}
+      weepingvines-modifier: {{ .Values.game.growth.weepingvines_modifier }}
+      cavevines-modifier: {{ .Values.game.growth.cavevines_modifier }}
+      glowberry-modifier: {{ .Values.game.growth.glowberry_modifier }}
+messages:
+  whitelist: {{ .Values.messages.whitelist | quote }}
+  unknown-command: {{ .Values.messages.unknown_command | quote }}
+  server-full: {{ .Values.messages.server_full | quote }}
+  outdated-client: {{ .Values.messages.outdated_client | quote }}
+  outdated-server: {{ .Values.messages.outdated_server | quote }}
+  restart: {{ .Values.messages.restart }}
+advancements:
+  disable-saving: false
+  disabled:
+  - minecraft:story/disabled
+players:
+  disable-saving: false
+config-version: 12
+stats:
+  disable-saving: false
+  forced-stats: {}
