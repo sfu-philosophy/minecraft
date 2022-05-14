@@ -1,0 +1,45 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Render config files
+        uses: ./.github/actions/render
+        env:
+          DATABASE_ADDRESS: ${{ secrets.DATABASE_ADDRESS }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+
+      - name: Deploy config files (proxy)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.SERVER_PROXY_FTP_ADDRESS }}
+          username: ${{ secrets.SERVER_PROXY_FTP_USERNAME }}
+          password: ${{ secrets.SERVER_PROXY_FTP_PASSWORD }}
+          local-dir: deploy/proxy/
+
+      - name: Deploy config files (creative)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.SERVER_CREATIVE_FTP_ADDRESS }}
+          username: ${{ secrets.SERVER_CREATIVE_FTP_USERNAME }}
+          password: ${{ secrets.SERVER_CREATIVE_FTP_PASSWORD }}
+          local-dir: deploy/creative/
+
+      - name: Deploy config files (survival)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.SERVER_SURVIVAL_FTP_ADDRESS }}
+          username: ${{ secrets.SERVER_SURVIVAL_FTP_USERNAME }}
+          password: ${{ secrets.SERVER_SURVIVAL_FTP_PASSWORD }}
+          local-dir: deploy/survival/
