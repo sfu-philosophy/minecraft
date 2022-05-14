@@ -1,0 +1,7 @@
+apiVersion: v2
+name: waterfall
+description: Bungeecord configuration
+
+type: application
+version: 0.1.0
+appVersion: "0"

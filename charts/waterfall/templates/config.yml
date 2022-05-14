@@ -1,0 +1,53 @@
+listeners:
+- query_port: 25577
+  motd: {{ .Values.motd | quote }}
+  tab_list: GLOBAL_PING
+  query_enabled: false
+  proxy_protocol: false
+  forced_hosts: {}
+  ping_passthrough: false
+  priorities:
+  {{- range .Values.priorities }}
+  - {{ . }}
+  {{- end }}
+  bind_local_address: true
+  host: {{ .Values.host }}
+  max_players: {{ .Values.players }}
+  tab_size: {{ .Values.tab_size }}
+  force_default_server: false
+remote_ping_cache: -1
+network_compression_threshold: 256
+permissions:
+  default:
+  - bungeecord.command.server
+  - bungeecord.command.list
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+log_pings: true
+connection_throttle_limit: 3
+server_connect_timeout: 5000
+timeout: 30000
+stats: 6b8fdf1f-3f04-46ad-9ce9-33fcb1debcdf
+player_limit: -1
+ip_forward: {{ .Values.ip_forward }}
+groups: {}
+remote_ping_timeout: 5000
+connection_throttle: 4000
+log_commands: false
+prevent_proxy_connections: false
+online_mode: {{ .Values.online_mode }}
+forge_support: true
+disabled_commands:
+- disabledcommandhere
+servers:
+  lobby:
+    motd: '&1Just another Waterfall - Forced Host'
+    address: 51.222.97.36:25598
+    restricted: false
+  survival:
+    motd: '&1Just another Waterfall - Forced Host'
+    address: 192.99.233.188:27037
+    restricted: false
