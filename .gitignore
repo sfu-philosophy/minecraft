@@ -1,0 +1,13 @@
+# Project
+.secrets
+.secrets.yml
+/deploy
+
+# Mac OS
+.DS_Store
+._*
+
+# IDE
+.*.swp
+*.iml
+.idea
