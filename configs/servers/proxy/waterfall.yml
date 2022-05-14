@@ -4,8 +4,8 @@
 ---
 
 motd: |
-  &rThe official SFU Philosophy Minecraft server.
-  &2https://discord.gg/&bsfuphilosophy
+  &7The official SFU Philosophy Minecraft server.
+  &3https://discord.gg/&bsfuphilosophy
 
 # Servers
 servers:
