@@ -86,10 +86,10 @@ class Chart:
                 subcharts.append(path.join(self.destination, self.chart_name, 'charts', subchart))
 
         for target in rename:
-            move_dir(
-                path.join(self.destination, target, 'templates'),
-                self.destination,
-            )
+            target_path = path.join(self.destination, target, 'templates')
+
+            postprocess_dir(target_path)
+            move_dir(target_path, self.destination)
 
             os.rmdir(path.join(self.destination, target))
 
@@ -273,6 +273,45 @@ def move_dir(source: 'str', dest: 'str'):
 
     # Remove the directory.
     os.rmdir(source)
+
+
+def postprocess_dir(dir: 'str'):
+    """
+    Recursively postprocesses the contents of a directory to another.
+     - Strips Helm headers.
+     - Extracts wrapped `.notyml` files.
+
+    :param dir: The directory to postprocess.
+    """
+    for entry in os.listdir(dir):
+        entry_path = path.join(dir, entry)
+
+        # Recursively postprocess directories.
+        if path.isdir(entry_path):
+            postprocess_dir(entry_path)
+            continue
+
+        # If the file ends in `.notyml`, we need to extract the real contents.
+        _, extname = os.path.splitext(entry)
+        if extname == '.notyml':
+            with open(entry_path, 'r') as handle:
+                contents = yaml.safe_load(handle)
+                with open(path.join(dir, contents['~rename']), 'w') as dest:
+                    dest.write(contents['~contents'])
+
+            os.remove(entry_path)
+            continue
+
+        # If the file ends in `.yml`, we need to strip the Helm header.
+        if extname == '.yml':
+            with open(entry_path, 'r') as handle:
+                handle.readline()  # First line.
+                handle.readline()  # Second line
+                contents = handle.read()
+                with open(entry_path + ".new", 'w') as dest:
+                    dest.write(contents)
+
+            os.rename(entry_path + ".new", entry_path)
 
 
 # ======================================================================================================================
