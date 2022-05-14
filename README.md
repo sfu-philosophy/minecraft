@@ -1,4 +1,6 @@
 # minecraft
+[![Deploy](https://github.com/sfu-philosophy/minecraft/actions/workflows/deploy.yaml/badge.svg?branch=deploy&event=push)](https://github.com/sfu-philosophy/minecraft/actions/workflows/deploy.yaml)
+
 Configuration and documentation for the SFU Philosophy Minecraft server.
 
 
