@@ -1,0 +1,29 @@
+---
+~target:  proxy
+~details: Permissions for LuckPerms
+~include:
+  - /permissions/permissions-admin.yml
+---
+
+$display:
+  groups:
+
+    # Default Group (all players)
+    default:
+      prefix:
+        - comment: "Unverified players"
+          priority: 5
+          text:     "&7"
+
+        - comment: "Students"
+          priority: 10
+          text:     "&f"
+          context:
+            discord: verified
+
+    # Minecraft Admin Group
+    minecraft-admin:
+      permissions:
+        - comment: Gives access to all LuckPerms commands.
+          name: luckperms.*
+          value: true

@@ -1,0 +1,8 @@
+$permissions-admin:
+  groups:
+
+    minecraft-admin:
+      permissions:
+        - comment: Gives access to all LuckPerms commands.
+          name: luckperms.*
+          value: true
