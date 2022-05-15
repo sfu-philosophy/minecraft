@@ -69,6 +69,8 @@ By pushing to the `deploy` branch, the CI will render all the server templates a
 After deploying successfully, the servers will need to be restarted manually.
 
 
+#### Permissions
+Permissions must be imported manually through `/lpb import permissions.json.gz --replace`.
 
 
 ## Architecture

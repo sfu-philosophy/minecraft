@@ -1,0 +1,38 @@
+$example:
+  groups:
+  #  default:
+  #    permissions:
+  #      - name:    luckperms.user.info
+  #        comment: Gives access to command /lp user [user] info
+  #        plugin:  LuckPerms
+  #        value:   true
+  #        context:
+  #          server: bungee
+  #
+  #    prefix:
+  #      - comment: Default prefix
+  #        priority: 1000
+  #        text: '&7[player] &r'
+  #
+  #    display:
+  #      - comment: Default display name
+  #        text: Default User
+  #
+  #    suffix:
+  #      - comment: Default suffix
+  #        priority: 1000
+  #        text: ': '
+  #
+  #    meta:
+  #      - comment: Some meta node
+  #        name: foo
+  #        text: bar
+  #
+  #  admins:
+  #    parents:
+  #      - group: default
+  #
+  #    prefix:
+  #      - priority: 2000
+  #        text: '&4[admin] &r'
+  #

@@ -1,0 +1,42 @@
+~rename: permissions.json.gz
+~modify:
+ - yaml2json
+ - gzip
+~contents: |-
+  metadata:
+    generatedBy: Helm
+    generatedAt: '2022-05-14 23:55:18 UTC'
+
+  groups:
+  {{- range .Values }}
+  {{- with .groups }}
+    {{- range $name, $group := .  }}
+    {{ $name }}:
+      nodes:
+      {{- /* --> Inheritance Nodes */}}
+      {{- range $node := $group.parents }}
+        {{- include "inheritance_node" $node | nindent 8 }}
+      {{- end }}
+      {{- /* --> Meta Nodes */}}
+      {{- range $node := $group.meta }}
+        {{- include "meta_node" $node | nindent 8 }}
+      {{- end }}
+      {{- /* --> Display Name Nodes */}}
+      {{- range $node := $group.display }}
+        {{- include "display_name_node" $node | nindent 8 }}
+      {{- end }}
+      {{- /* --> Prefix/Suffix Nodes */}}
+      {{- range $type := (list "prefix" "suffix") }}
+        {{- with (index $group $type) }}
+        {{- range $node := . }}
+          {{- include (printf "%s_node" $type) . | nindent 8 }}
+        {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- /* --> Permission Nodes */}}
+      {{- range $node := $group.permissions }}
+        {{- include "permission_node" $node | nindent 8 }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- end }}
